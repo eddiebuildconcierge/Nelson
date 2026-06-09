@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Business Case for Build Concierge</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <style>
+    :root {
+      --bc-dark-blue: #0B1B32;
+      --bc-blue: #2E52FE;
+      --bc-green: #28E289;
+      --bc-orange: #FF6B00;
+      --bc-light-grey: #F4F5F7;
+      --bc-white: #FFFFFF;
+      --bc-cream: #FAF5EF;
+      --spacing-1: 0.25rem;
+      --spacing-2: 0.5rem;
+      --spacing-4: 1rem;
+      --spacing-6: 1.5rem;
+      --spacing-8: 2rem;
+      --spacing-12: 3rem;
+      --spacing-16: 4rem;
+      --border-radius: 0.75rem;
+      --box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bc-white);
+      color: #282922;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 var(--spacing-6); }
+    section { padding: var(--spacing-16) 0; }
+    h1, h2, h3, h4 { color: var(--bc-dark-blue); line-height: 1.2; margin-bottom: var(--spacing-4); }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.4rem; }
+    a { color: var(--bc-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { padding-left: 1.2rem; }
+    li { margin-bottom: 0.5rem; }
+
+    /* ── SECTION TITLE ─────────────────────────────────────── */
+    .section-title { text-align: center; margin-bottom: var(--spacing-12); }
+    .section-title .icon { color: var(--bc-blue); width: 44px; height: 44px; margin: 0 auto var(--spacing-4); display: block; }
+    .section-title h2 { margin-bottom: var(--spacing-2); }
+    .section-title p { max-width: 680px; margin: 0 auto; color: #6b7280; font-size: 1rem; }
+
+    /* ── HERO ──────────────────────────────────────────────── */
+    #hero {
+      background-color: var(--bc-dark-blue);
+      color: var(--bc-white);
+      padding: var(--spacing-16) 0;
+      text-align: center;
+    }
+    .hero-logos {
+      display: flex; justify-content: center; align-items: center;
+      gap: 2rem; margin-bottom: var(--spacing-8); flex-wrap: wrap;
+    }
+    .hero-logo-divider { height: 32px; width: 1px; background: rgba(255,255,255,0.2); }
+    .hero-client-badge {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 8px 18px;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .hero-client-initials {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 800; color: #fff; letter-spacing: 0.05em;
+    }
+    .hero-client-name { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); }
+    #hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--bc-white); letter-spacing: -0.03em; }
+    #hero .subhead {
+      font-size: 1.1rem; max-width: 720px; margin: var(--spacing-4) auto var(--spacing-8);
+      opacity: 0.75; line-height: 1.7;
+    }
+    .cta-buttons { display: flex; justify-content: center; gap: var(--spacing-4); flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 0.8rem 1.8rem;
+      border-radius: var(--border-radius); font-family: inherit;
+      font-weight: 700; text-decoration: none;
+      transition: all 0.2s; border: 2px solid transparent;
+      cursor: pointer; font-size: 0.95rem;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-2px); }
+    .btn-primary { background-color: var(--bc-blue); color: var(--bc-white); }
+    .btn-primary:hover { background-color: #1e3fec; }
+    .btn-secondary { background-color: transparent; color: var(--bc-white); border-color: rgba(255,255,255,0.4); }
+    .btn-secondary:hover { background-color: rgba(255,255,255,0.1); }
+    .btn-accent { background-color: var(--bc-green); color: var(--bc-dark-blue); }
+    .btn-accent:hover { background-color: #20c978; }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: rgba(255,255,255,0.1);
+      border-radius: var(--border-radius); overflow: hidden;
+      max-width: 800px; margin: var(--spacing-12) auto 0;
+    }
+    .hero-stat { background: rgba(255,255,255,0.05); padding: var(--spacing-6) var(--spacing-4); text-align: center; }
+    .hero-stat .val { font-size: 1.9rem; font-weight: 800; line-height: 1; }
+    .hero-stat .lbl { font-size: 0.72rem; opacity: 0.55; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ── DISCOVERY ─────────────────────────────────────────── */
+    .meetings-grid { display: grid; grid-template-columns: 1fr; gap: var(--spacing-8); }
+    .meeting-card {
+      background-color: var(--bc-white);
+      border: 1px solid #e5e7eb;
+      border-radius: var(--border-radius);
+      padding: var(--spacing-8);
+      position: relative; overflow: hidden;
+    }
+    .meeting-card::before {
+      content: ''; display: block;
+      height: 5px; width: 100%;
+      background: var(--bc-dark-blue);
+      position: absolute; top: 0; left: 0;
+    }
+    .meeting-tag {
+      background-color: var(--bc-light-grey); color: var(--bc-dark-blue);
+      font-weight: 700; padding: 4px 14px; border-radius: 20px;
+      font-size: 0.78rem; display: inline-block; margin-bottom: var(--spacing-4);
+    }
+    .meeting-card h3 { font-size: 1.2rem; margin-bottom: var(--spacing-4); }
+    .meeting-card ul { margin-left: var(--spacing-4); margin-bottom: var(--spacing-4); }
+    .meeting-card li { margin-bottom: var(--spacing-2); font-size: 0.93rem; line-height: 1.55; }
+    .quote-box {
+      background: var(--bc-cream);
+      border-left: 4px solid var(--bc-blue);
+      padding: var(--spacing-6);
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      margin-top: var(--spacing-6);
+    }
+    .quote-box p { font-style: italic; font-size: 1rem; line-height: 1.65; }
+    .quote-box cite { font-style: normal; font-size: 0.83rem; color: #6b7280; font-weight: 600; display: block; margin-top: var(--spacing-2); }
+
+    /* ── STATE CARDS ───────────────────────────────────────── */
+    .infographic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-8); align-items: start; }
+    .state-card { background-color: var(--bc-light-grey); padding: var(--spacing-8); border-radius: var(--border-radius); }
+    .state-card h3 { display: flex; align-items: center; gap: var(--spacing-3, 0.75rem); font-size: 1.2rem; }
+    .state-card ul { list-style: none; padding: 0; margin-top: var(--spacing-6); }
+    .state-card li { padding-left: 2rem; position: relative; margin-bottom: var(--spacing-4); line-height: 1.55; font-size: 0.93rem; }
+    .state-card li::before { content: ''; position: absolute; left: 0; top: 5px; width: 16px; height: 16px; border-radius: 50%; }
+    .state-card.current li::before { background-color: var(--bc-dark-blue); }
+    .state-card.future li::before { background-color: var(--bc-green); }
+    .state-card.future li { color: var(--bc-dark-blue); }
+
+    /* ── MEDDIC ────────────────────────────────────────────── */
+    .meddic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: var(--spacing-6); }
+    .meddic-card { background-color: var(--bc-light-grey); padding: var(--spacing-6); border-radius: var(--border-radius); }
+    .meddic-card h4 { color: var(--bc-blue); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.8px; display: flex; align-items: center; gap: 8px; margin-bottom: var(--spacing-4); }
+    .meddic-card h4 svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .meddic-card p { font-size: 0.93rem; line-height: 1.65; color: #374151; }
+
+    /* ── COST TABLE ────────────────────────────────────────── */
+    .table-wrap { background: var(--bc-white); border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--box-shadow); }
+    .cost-table { width: 100%; border-collapse: collapse; }
+    .cost-table th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.09em; color: #9ca3af; font-weight: 700; padding: 12px 18px; border-bottom: 2px solid #e5e7eb; background: var(--bc-light-grey); }
+    .cost-table th.r { text-align: right; }
+    .cost-table td { padding: 15px 18px; border-bottom: 1px solid #f0f0f0; font-size: 0.92rem; }
+    .cost-table td.r { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; color: var(--bc-dark-blue); }
+    .cost-table tr:last-child td { border-bottom: none; }
+    .cost-table .total-row td { font-weight: 800; font-size: 1rem; background: var(--bc-dark-blue); color: var(--bc-white); }
+    .cost-table .total-row td.r { color: var(--bc-green); }
+    .assumption-tag { display: inline-block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em; background: #FEF3C7; color: #92400E; padding: 2px 7px; border-radius: 3px; font-weight: 700; vertical-align: middle; margin-left: 5px; }
+    .note-text { font-size: 0.8rem; color: #9ca3af; font-style: italic; }
+
+    /* ── ROI CALCULATOR ────────────────────────────────────── */
+    #roi { background-color: var(--bc-cream); }
+    .calculator-wrapper {
+      display: grid; grid-template-columns: 1fr 1.15fr; gap: var(--spacing-8);
+      background-color: var(--bc-white);
+      padding: var(--spacing-8); border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+    .calc-col-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #9ca3af; margin-bottom: var(--spacing-6); }
+    .calculator-input { margin-bottom: var(--spacing-6); }
+    .calculator-input label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: var(--spacing-2); font-size: 0.88rem; color: var(--bc-dark-blue); }
+    .calculator-input label span:last-child { color: var(--bc-blue); font-weight: 800; }
+    input[type="range"] {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 7px;
+      background: #e0e0e0; border-radius: 5px; outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 20px; height: 20px;
+      background: var(--bc-blue); cursor: pointer;
+      border-radius: 50%; border: 3px solid var(--bc-white);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    .roi-results { text-align: center; }
+    .total-savings { font-size: 3.4rem; font-weight: 900; color: var(--bc-green); line-height: 1; letter-spacing: -0.04em; }
+    .roi-subtitle { font-size: 0.9rem; color: #6b7280; margin-top: 6px; }
+    .net-benefit {
+      font-size: 1rem; font-weight: 700; margin-top: var(--spacing-6);
+      padding: var(--spacing-4); background: rgba(40,226,137,0.08);
+      border-radius: var(--border-radius); line-height: 1.8;
+    }
+    .net-benefit .positive { color: #059669; }
+    .net-benefit .investment { color: #dc2626; }
+    .donut-chart-container { position: relative; width: 200px; height: 200px; margin: var(--spacing-6) auto; }
+    .donut-chart { transform: rotate(-90deg); }
+    .donut-segment { fill: none; stroke-width: 20; transition: stroke-dasharray 0.5s ease; }
+    .donut-legend { list-style: none; padding: 0; display: flex; justify-content: center; gap: var(--spacing-6); flex-wrap: wrap; margin-top: var(--spacing-4); }
+    .donut-legend li { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; }
+    .legend-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+    .calc-breakdown { display: flex; flex-direction: column; gap: var(--spacing-3, 0.75rem); margin-top: var(--spacing-6); }
+    .calc-breakdown details { background-color: var(--bc-light-grey); border-radius: var(--border-radius); overflow: hidden; }
+    .calc-breakdown summary {
+      padding: var(--spacing-4) var(--spacing-4);
+      cursor: pointer; display: flex; justify-content: space-between;
+      font-weight: 600; font-size: 0.88rem; list-style: none;
+      align-items: center;
+    }
+    .calc-breakdown summary::-webkit-details-marker { display: none; }
+    .calc-breakdown summary .summary-val { font-weight: 800; color: var(--bc-blue); }
+    .calc-breakdown details[open] summary { border-bottom: 1px solid #e5e7eb; }
+    .calc-breakdown details p { padding: var(--spacing-4); font-size: 0.82rem; color: #6b7280; line-height: 1.65; }
+
+    /* ── NEXT STEPS ────────────────────────────────────────── */
+    #next-steps { background-color: var(--bc-dark-blue); }
+    #next-steps .section-title h2 { color: var(--bc-white); }
+    #next-steps .section-title p { color: rgba(255,255,255,0.55); }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-6); margin-top: var(--spacing-8); }
+    .step-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--border-radius); padding: var(--spacing-6);
+    }
+    .step-num {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--bc-blue);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 900; color: var(--bc-white);
+      margin-bottom: var(--spacing-4);
+    }
+    .step-card h4 { color: var(--bc-white); font-size: 1rem; margin-bottom: var(--spacing-2); }
+    .step-card p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .cta-block {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--border-radius);
+      padding: var(--spacing-8);
+      margin-top: var(--spacing-12);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--spacing-6); flex-wrap: wrap;
+    }
+    .cta-block-text h3 { color: var(--bc-white); margin-bottom: var(--spacing-2); }
+    .cta-block-text p { color: rgba(255,255,255,0.55); font-size: 0.93rem; max-width: 480px; }
+    .cta-block-actions { display: flex; gap: var(--spacing-4); flex-wrap: wrap; flex-shrink: 0; }
+    .rep-card {
+      display: flex; align-items: center; gap: var(--spacing-4);
+      margin-top: var(--spacing-8);
+      padding-top: var(--spacing-8);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .rep-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; font-weight: 800; color: rgba(255,255,255,0.5);
+      flex-shrink: 0;
+    }
+    .rep-name { font-size: 1rem; font-weight: 700; color: var(--bc-white); }
+    .rep-role { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+    .rep-email { font-size: 0.82rem; color: var(--bc-blue); margin-top: 3px; }
+
+    /* ── FOOTER ────────────────────────────────────────────── */
+    footer {
+      background: #080f1c;
+      padding: var(--spacing-8) 0;
+      text-align: center;
+    }
+    footer img { height: 22px; margin-bottom: var(--spacing-4); opacity: 0.6; }
+    footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); letter-spacing: 0.04em; }
+
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      h2 { font-size: 1.6rem; }
+      #hero h1 { font-size: 2rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .infographic-grid, .calculator-wrapper, .steps-grid { grid-template-columns: 1fr; }
+      .cta-block { flex-direction: column; }
+    }
+
+    /* ── LOGO SCROLLER ───────────────────────────────────────── */
+    @keyframes logo-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .logo-scroller-track {
+      display: flex;
+      width: max-content;
+      animation: logo-scroll 36s linear infinite;
+      gap: 3rem;
+      align-items: center;
+    }
+    .logo-scroller-track img {
+      filter: grayscale(100%);
+      opacity: 0.5;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+    .logo-scroller-track img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.08);
+    }
+    .logo-scroller-wrap {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     HERO — DIAGONAL SPLIT
+═════════════════════════════════════════════════════════════ -->
+<section id="hero" style="position:relative;overflow:hidden;min-height:600px;padding:0;">
+
+  <!-- Green–blue accent stripe -->
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#28E289 0%,#2E52FE 100%);z-index:20;"></div>
+
+  <!-- Right side: photo -->
+  <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/SaulGroupCustomer.jpeg"
+    alt="Swift Facilities Management team"
+    style="position:absolute;right:0;top:0;width:55%;height:100%;object-fit:cover;object-position:center 25%;">
+  <!-- Subtle darkening on photo so it doesn't compete -->
+  <div style="position:absolute;right:0;top:0;width:55%;height:100%;background:rgba(11,27,50,0.18);"></div>
+
+  <!-- Left navy panel — diagonal right edge via clip-path -->
+  <div style="position:absolute;left:0;top:0;width:65%;height:100%;background:var(--bc-dark-blue);clip-path:polygon(0 0, 100% 0, 86% 100%, 0 100%);"></div>
+
+  <!-- All content — inside container, left-aligned, sitting above the layers -->
+  <div class="container" style="position:relative;z-index:10;min-height:600px;display:flex;align-items:center;padding-top:5rem;padding-bottom:4rem;">
+    <div style="max-width:56%;">
+
+      <!-- Logo — centred above headline -->
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/build-concierge-white.png"
+        alt="Build Concierge" style="height:80px;opacity:0.9;display:block;margin:0 auto 1.75rem auto;">
+
+      <!-- Headline -->
+      <h1 id="hero-headline" style="color:#fff;font-size:clamp(2rem,3.5vw,3rem);font-weight:900;line-height:1.08;letter-spacing:-0.03em;margin-bottom:1.5rem;">
+        The Business Case for Build Concierge
+      </h1>
+
+      <!-- Subhead -->
+      <p id="hero-subhead" style="color:rgba(255,255,255,0.6);font-size:1rem;line-height:1.75;margin-bottom:1.75rem;max-width:520px;">
+        A tailored business case — showing exactly where the time is going and how Build Concierge recovers it.
+      </p>
+
+      <!-- CTA buttons — full width to match stats grid -->
+      <div style="display:flex;gap:0.6rem;flex-wrap:nowrap;margin-bottom:2.75rem;max-width:520px;">
+        <a id="btn-rewatch" href="#" class="btn btn-primary" style="flex:1;text-align:center;white-space:nowrap;">Rewatch Our Meeting</a>
+        <a href="#roi" class="btn btn-accent" style="flex:1;text-align:center;white-space:nowrap;">ROI Calculator</a>
+        <a href="#discovery" class="btn btn-secondary" style="flex:1;text-align:center;white-space:nowrap;">The Business Case</a>
+      </div>
+
+      <!-- Stats row -->
+      <div id="bc-stats-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.1);border-radius:0.75rem;overflow:hidden;max-width:520px;">
+        <!-- populated by renderStats() -->
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     CUSTOMER LOGO CAROUSEL
+═════════════════════════════════════════════════════════════ -->
+<section style="background:#ffffff;padding:1.75rem 0;border-top:1px solid rgba(11,27,50,0.07);border-bottom:1px solid rgba(11,27,50,0.07);">
+  <div style="margin-bottom:0.85rem;text-align:center;">
+    <span style="font-size:0.62rem;font-weight:700;color:rgba(11,27,50,0.35);text-transform:uppercase;letter-spacing:0.28em;">Trusted by field service businesses across the UK</span>
+  </div>
+  <div class="logo-scroller-wrap">
+    <div class="logo-scroller-track">
+      <!-- Set 1 -->
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/DrainFIX-Services-logo.webp" style="height:34px;width:auto;" alt="DrainFIX Services">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Purple-Roofing-Co-White-Colour-Landscape.webp" style="height:34px;width:auto;" alt="Purple Roofing Co">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/ags-one-logo.webp" style="height:34px;width:auto;" alt="AGS One">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/ccr-property-services-logo.webp" style="height:34px;width:auto;" alt="CCR Property Services">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/contego-logo-crop.webp" style="height:34px;width:auto;" alt="Contego">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/logo-copley.webp" style="height:34px;width:auto;" alt="Copley">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/logo-ease-electrical-ltd.webp" style="height:34px;width:auto;" alt="Ease Electrical">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/p-blackhall-logo-1.webp" style="height:34px;width:auto;" alt="P Blackhall">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/rescue-rod-logo.webp" style="height:34px;width:auto;" alt="Rescue Rod">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/s-o-brien-heating-solutions-logo.webp" style="height:34px;width:auto;" alt="S O'Brien Heating">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/sherwoods-logo.webp" style="height:34px;width:auto;" alt="Sherwoods">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/twd-drainage-logo.webp" style="height:34px;width:auto;" alt="TWD Drainage">
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/DrainFIX-Services-logo.webp" style="height:34px;width:auto;" alt="DrainFIX Services">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Purple-Roofing-Co-White-Colour-Landscape.webp" style="height:34px;width:auto;" alt="Purple Roofing Co">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/ags-one-logo.webp" style="height:34px;width:auto;" alt="AGS One">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/ccr-property-services-logo.webp" style="height:34px;width:auto;" alt="CCR Property Services">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/contego-logo-crop.webp" style="height:34px;width:auto;" alt="Contego">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/logo-copley.webp" style="height:34px;width:auto;" alt="Copley">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/logo-ease-electrical-ltd.webp" style="height:34px;width:auto;" alt="Ease Electrical">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/p-blackhall-logo-1.webp" style="height:34px;width:auto;" alt="P Blackhall">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/rescue-rod-logo.webp" style="height:34px;width:auto;" alt="Rescue Rod">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/s-o-brien-heating-solutions-logo.webp" style="height:34px;width:auto;" alt="S O'Brien Heating">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/sherwoods-logo.webp" style="height:34px;width:auto;" alt="Sherwoods">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/twd-drainage-logo.webp" style="height:34px;width:auto;" alt="TWD Drainage">
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     DISCOVERY
+═════════════════════════════════════════════════════════════ -->
+<section id="discovery" style="background:linear-gradient(135deg,#cde8e6 0%,#f5f5f2 45%,#f5e4cc 100%);position:relative;overflow:hidden;">
+
+  <div class="container" style="position:relative;z-index:1;">
+
+    <!-- Section header -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3rem;flex-wrap:wrap;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <div style="height:2px;width:32px;background:var(--bc-blue);border-radius:2px;"></div>
+          <span id="discovery-eyebrow" style="font-size:0.7rem;font-weight:800;color:var(--bc-blue);text-transform:uppercase;letter-spacing:0.32em;">Discovery Call</span>
+        </div>
+        <h2 id="discovery-headline" style="color:var(--bc-dark-blue);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;letter-spacing:-0.03em;line-height:1.1;margin:0;">What we heard<br>on your discovery call</h2>
+      </div>
+      <div id="discovery-attribution" style="font-size:0.88rem;color:rgba(11,27,50,0.45);max-width:300px;line-height:1.6;flex-shrink:0;">
+        Every insight on this page came from that call.
+      </div>
+    </div>
+
+    <!-- Pain cards — rendered by JS from PROSPECT.pains -->
+    <div id="pain-container-top" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem;"></div>
+    <div id="pain-container-mid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem;"></div>
+    <div id="pain-container-bottom" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:2.5rem;"></div>
+
+    <!-- Quote — rendered by JS from PROSPECT.quote -->
+    <div id="discovery-quote"></div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     CURRENT VS FUTURE
+═════════════════════════════════════════════════════════════ -->
+<section id="current-future">
+  <div class="container">
+    <div class="section-title">
+      <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/build-concierge-DarkBlue.png" alt="Build Concierge" class="icon" style="height:44px;width:auto;object-fit:contain;">
+      <h2>Current State vs. Future State</h2>
+      <p>From a back office buried in manual tasks to an automated operation that runs itself.</p>
+    </div>
+
+    <div class="infographic-grid">
+      <div class="state-card current">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0B1B32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          <span>Today at <span class="js-company">your business</span> (Manual &amp; Reactive)</span>
+        </h3>
+        <ul id="current-state-list"></ul>
+      </div>
+      <div class="state-card future">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#28E289" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>With Build Concierge (Automated &amp; Proactive)</span>
+        </h3>
+        <ul id="future-state-list"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     WHAT GETS AUTOMATED
+═════════════════════════════════════════════════════════════ -->
+<section style="background-color: var(--bc-light-grey);">
+  <div class="container">
+    <div class="section-title">
+      <h2>What Gets Automated for <span class="js-company">Your Business</span></h2>
+      <p id="bc-workflows-subtitle">Workflows running manually today — handled automatically from day one.</p>
+    </div>
+    <div id="bc-workflows-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;">
+        <!-- populated by renderWorkflows() -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     PORTALS & CLIENTS
+═════════════════════════════════════════════════════════════ -->
+<section style="background:#0B1B32;padding:4.5rem 0;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#28E289 0%,#2E52FE 100%);"></div>
+
+  <div class="container" style="position:relative;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:2.75rem;">
+      <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:1rem;">
+        <div style="height:1px;width:28px;background:rgba(255,255,255,0.2);flex-shrink:0;"></div>
+        <span style="font-size:0.68rem;font-weight:800;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.32em;">We Know Your World</span>
+        <div style="height:1px;width:28px;background:rgba(255,255,255,0.2);flex-shrink:0;"></div>
+      </div>
+      <h2 style="margin:0 0 1rem;font-size:clamp(1.7rem,2.8vw,2.75rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-0.03em;">We know the portals your clients use.<br><em style="color:#28E289;font-style:normal;">And the clients behind them.</em></h2>
+      <p style="margin:0 auto;font-size:0.95rem;color:rgba(255,255,255,0.55);max-width:580px;line-height:1.7;">These are the household names your clients are already working for. We connect to the portals they use to issue that work — so every job lands straight in BigChange without anyone re-keying a thing.</p>
+    </div>
+
+    <!-- Client brands -->
+    <div style="margin-bottom:2rem;">
+      <div style="display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:1.1rem;">
+        <div style="height:1px;flex:1;max-width:60px;background:rgba(255,255,255,0.12);"></div>
+        <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.22em;color:rgba(255,255,255,0.4);">Example brands that issue the work orders</span>
+        <div style="height:1px;flex:1;max-width:60px;background:rgba(255,255,255,0.12);"></div>
+      </div>
+      <div style="display:flex;gap:0.875rem;justify-content:center;flex-wrap:wrap;">
+        <div style="background:#fff;border-radius:14px;padding:14px 28px;display:flex;align-items:center;justify-content:center;height:64px;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Stonegate-logo.webp" alt="Stonegate Group" style="height:32px;width:auto;max-width:140px;object-fit:contain;filter:grayscale(1);mix-blend-mode:multiply;">
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:14px 28px;display:flex;align-items:center;justify-content:center;height:64px;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Greene_King_logo.svg.png" alt="Greene King" style="height:32px;width:auto;max-width:140px;object-fit:contain;filter:grayscale(1);mix-blend-mode:multiply;">
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:14px 28px;display:flex;align-items:center;justify-content:center;height:64px;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Whitbread.jpg.webp" alt="Whitbread" style="height:32px;width:auto;max-width:140px;object-fit:contain;filter:grayscale(1);mix-blend-mode:multiply;">
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:14px 28px;display:flex;align-items:center;justify-content:center;height:64px;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
+          <img src="https://www.supplychain247.com/images/logos/cbre_logo_600.png" alt="CBRE" style="height:32px;width:auto;max-width:140px;object-fit:contain;filter:grayscale(1);mix-blend-mode:multiply;">
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:14px 28px;display:flex;align-items:center;justify-content:center;height:64px;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Marstons-logo.jpg" alt="Marston's" style="height:32px;width:auto;max-width:140px;object-fit:contain;filter:grayscale(1);mix-blend-mode:multiply;">
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:14px 28px;display:flex;align-items:center;justify-content:center;height:64px;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Mitchells_%26_Butlers_logo.svg.png" alt="Mitchells &amp; Butlers" style="height:32px;width:auto;max-width:140px;object-fit:contain;filter:grayscale(1);mix-blend-mode:multiply;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider arrow -->
+    <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:1.75rem;">
+      <div style="height:1px;flex:1;max-width:100px;background:rgba(255,255,255,0.1);"></div>
+      <div style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(40,226,137,0.12);border:1px solid rgba(40,226,137,0.3);">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#28E289" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div style="height:1px;flex:1;max-width:100px;background:rgba(255,255,255,0.1);"></div>
+    </div>
+
+    <!-- Portal badges -->
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:1.1rem;">
+        <div style="height:1px;flex:1;max-width:60px;background:rgba(255,255,255,0.12);"></div>
+        <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.22em;color:rgba(255,255,255,0.4);">Via portals we can already create jobs from</span>
+        <div style="height:1px;flex:1;max-width:60px;background:rgba(255,255,255,0.12);"></div>
+      </div>
+      <div style="display:flex;gap:0.65rem;justify-content:center;flex-wrap:wrap;">
+        <div style="background:#fff;border-radius:12px;padding:12px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:90px;box-shadow:0 4px 16px rgba(0,0,0,0.18);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Ostara.png" alt="Ostara" style="height:22px;width:auto;max-width:80px;object-fit:contain;">
+          <span style="font-size:0.55rem;font-weight:700;color:rgba(11,27,50,0.5);text-transform:uppercase;letter-spacing:0.12em;">Ostara</span>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:12px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:90px;box-shadow:0 4px 16px rgba(0,0,0,0.18);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/FixFlo.png" alt="Fixflo" style="height:22px;width:auto;max-width:80px;object-fit:contain;">
+          <span style="font-size:0.55rem;font-weight:700;color:rgba(11,27,50,0.5);text-transform:uppercase;letter-spacing:0.12em;">Fixflo</span>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:12px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:90px;box-shadow:0 4px 16px rgba(0,0,0,0.18);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/ProNett.png" alt="ProNett" style="height:22px;width:auto;max-width:80px;object-fit:contain;">
+          <span style="font-size:0.55rem;font-weight:700;color:rgba(11,27,50,0.5);text-transform:uppercase;letter-spacing:0.12em;">ProNett</span>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:12px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:90px;box-shadow:0 4px 16px rgba(0,0,0,0.18);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/ServiceChannel.png" alt="ServiceChannel" style="height:22px;width:auto;max-width:80px;object-fit:contain;">
+          <span style="font-size:0.55rem;font-weight:700;color:rgba(11,27,50,0.5);text-transform:uppercase;letter-spacing:0.12em;">ServiceChannel</span>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:12px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:90px;box-shadow:0 4px 16px rgba(0,0,0,0.18);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Concerto.png" alt="Concerto" style="height:22px;width:auto;max-width:80px;object-fit:contain;">
+          <span style="font-size:0.55rem;font-weight:700;color:rgba(11,27,50,0.5);text-transform:uppercase;letter-spacing:0.12em;">Concerto</span>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:12px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:90px;box-shadow:0 4px 16px rgba(0,0,0,0.18);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Vantify.png" alt="Vantify" style="height:22px;width:auto;max-width:80px;object-fit:contain;">
+          <span style="font-size:0.55rem;font-weight:700;color:rgba(11,27,50,0.5);text-transform:uppercase;letter-spacing:0.12em;">Vantify</span>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:12px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:90px;box-shadow:0 4px 16px rgba(0,0,0,0.18);">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Verisae.png" alt="Verisae" style="height:22px;width:auto;max-width:80px;object-fit:contain;">
+          <span style="font-size:0.55rem;font-weight:700;color:rgba(11,27,50,0.5);text-transform:uppercase;letter-spacing:0.12em;">Verisae</span>
+        </div>
+      </div>
+      <p style="margin:1.25rem auto 0;text-align:center;font-size:0.72rem;color:rgba(255,255,255,0.3);font-style:italic;max-width:540px;line-height:1.6;">Where a direct API integration exists, Build Concierge connects natively. Where it doesn't, jobs can still be created automatically from work order emails — no manual re-keying either way.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     COST SECTION
+═════════════════════════════════════════════════════════════ -->
+<section id="roi" style="background:linear-gradient(135deg,#cde8e6 0%,#f5f5f2 45%,#f5e4cc 100%);overflow:hidden;position:relative;padding:56px 0;">
+
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(11,27,50,0.07) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0;"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#28E289 0%,#0B1B32 100%);z-index:2;"></div>
+
+  <div class="container" style="position:relative;z-index:1;">
+
+    <!-- Header -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;margin-bottom:32px;flex-wrap:wrap;">
+      <div style="flex-shrink:0;">
+        <div style="display:inline-flex;flex-direction:column;align-items:center;margin-bottom:12px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="height:1px;width:28px;background:rgba(46,82,254,0.35);flex-shrink:0;"></div>
+            <span style="color:#2E52FE;font-weight:700;text-transform:uppercase;letter-spacing:0.35em;font-size:15px;white-space:nowrap;">ROI Calculator</span>
+            <div style="height:1px;width:28px;background:rgba(46,82,254,0.35);flex-shrink:0;"></div>
+          </div>
+        </div>
+        <h2 style="margin:0;font-size:clamp(22px,2.5vw,36px);font-weight:900;line-height:1.1;letter-spacing:-0.04em;color:#0B1B32;">Your potential saving, <em style="color:#2E52FE;font-style:normal;">calculated.</em></h2>
+      </div>
+      <div style="max-width:440px;padding-bottom:4px;">
+        <p style="margin:0 0 10px;font-size:clamp(14px,1.1vw,16px);line-height:1.65;color:#0B1B32;font-weight:500;">Every work order re-keyed by hand, every email chased manually, every invoice sent a week late — individually, none of it feels significant. Together, it adds up to more than most businesses realise.</p>
+        <p style="margin:0;font-size:clamp(12px,1vw,14px);line-height:1.6;color:rgba(11,27,50,0.7);">Fill in what applies to your operation. Leave anything blank and we exclude it from the total — this is your number, not a generic estimate.</p>
+      </div>
+    </div>
+
+    <!-- Two-column layout -->
+    <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap;">
+
+      <!-- LEFT: Input cards -->
+      <div id="roi-calculator" style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:12px;">
+
+        <!-- 1. Workflow Automation -->
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(11,27,50,0.08);">
+          <div style="background:#0B1B32;padding:7px 16px;">
+            <span style="font-size:12px;font-weight:900;color:#ffffff;letter-spacing:0.18em;text-transform:uppercase;">Workflow Automation &nbsp;&middot;&nbsp; Manual admin &amp; processing</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.9);border-top:none;border-radius:0 0 14px 14px;padding:15px 20px;">
+            <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Staff <input id="wf-staff" type="number" min="0" placeholder="e.g. 3" style="width:52px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;"></label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Avg salary &pound;<input id="wf-salary" type="number" min="0" placeholder="28" style="width:44px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;">k/yr</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Time on manual <input id="wf-pct" type="number" min="0" max="100" placeholder="40" style="width:40px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;">%</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Revenue Growth -->
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(11,27,50,0.08);">
+          <div style="background:#2E52FE;padding:7px 16px;">
+            <span style="font-size:12px;font-weight:900;color:#ffffff;letter-spacing:0.18em;text-transform:uppercase;">Revenue Growth &nbsp;&middot;&nbsp; Missed &amp; unconverted revenue</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.9);border-top:none;border-radius:0 0 14px 14px;padding:15px 20px;">
+            <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Missed leads/mo <input id="rev-leads" type="number" min="0" placeholder="20" style="width:52px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;"></label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Avg job value &pound;<input id="rev-avgval" type="number" min="0" placeholder="2500" style="width:60px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;"></label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Conversion uplift <input id="rev-uplift" type="number" min="0" max="100" placeholder="20" style="width:40px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;">%</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. OOH Call Handling -->
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(11,27,50,0.08);">
+          <div style="background:#2E52FE;padding:7px 16px;">
+            <span style="font-size:12px;font-weight:900;color:#ffffff;letter-spacing:0.18em;text-transform:uppercase;">Receptionist &nbsp;&middot;&nbsp; OOH call handling costs</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.9);border-top:none;border-radius:0 0 14px 14px;padding:15px 20px;">
+            <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Monthly OOH call cost &pound;<input id="rec-ooh" type="number" min="0" placeholder="500" style="width:64px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;"></label>
+              <span style="font-size:12px;color:rgba(11,27,50,0.45);font-style:italic;">answering service, on-call diversion, or missed calls</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Advisor / Website Leads -->
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(11,27,50,0.08);">
+          <div style="background:#2E52FE;padding:7px 16px;">
+            <span style="font-size:12px;font-weight:900;color:#ffffff;letter-spacing:0.18em;text-transform:uppercase;">Advisor &nbsp;&middot;&nbsp; Uncaptured website leads</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.9);border-top:none;border-radius:0 0 14px 14px;padding:15px 20px;">
+            <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Chatbot cost displaced &pound;<input id="adv-chatbot" type="number" min="0" placeholder="0" style="width:52px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;">/mo</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Web leads missed/mo <input id="adv-leads" type="number" min="0" placeholder="10" style="width:44px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;"></label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Value per lead &pound;<input id="adv-val" type="number" min="0" placeholder="1500" style="width:56px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;"></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Support & Retention -->
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(11,27,50,0.08);">
+          <div style="background:#2E52FE;padding:7px 16px;">
+            <span style="font-size:12px;font-weight:900;color:#ffffff;letter-spacing:0.18em;text-transform:uppercase;">Support &nbsp;&middot;&nbsp; At-risk contract value</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.9);border-top:none;border-radius:0 0 14px 14px;padding:15px 20px;">
+            <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Contract revenue at risk &pound;<input id="sup-contracts" type="number" min="0" placeholder="100000" style="width:72px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;">/yr</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#0B1B32;white-space:nowrap;font-weight:500;">Churn reduction est. <input id="sup-churn" type="number" min="0" max="100" placeholder="15" style="width:40px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.15);border-radius:7px;color:#0B1B32;padding:5px 8px;font-size:12px;font-weight:600;outline:none;font-family:inherit;">%</label>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end left -->
+
+      <!-- RIGHT: Output panel -->
+      <div style="width:min(42%,480px);min-width:280px;display:flex;flex-direction:column;gap:12px;">
+
+        <div style="background:#2E52FE;border-radius:20px;padding:32px 36px;box-shadow:0 12px 40px rgba(46,82,254,0.3);">
+          <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.28em;margin-bottom:8px;">Estimated Annual Saving</div>
+          <div id="roi-annual" style="font-size:clamp(40px,4.2vw,60px);font-weight:900;color:#ffffff;line-height:1;letter-spacing:-0.04em;">&pound;0</div>
+        </div>
+
+        <div style="background:#2E52FE;border-radius:16px;padding:18px 22px;box-shadow:0 8px 28px rgba(46,82,254,0.25);">
+          <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.22em;margin-bottom:12px;">Saving Breakdown</div>
+          <div id="roi-breakdown"><div style="color:rgba(255,255,255,0.6);font-size:14px;text-align:center;padding:10px 0;">Fill in any fields on the left to see your breakdown</div></div>
+        </div>
+
+        <div style="display:flex;gap:10px;">
+          <div style="flex:1;background:#2E52FE;border-radius:12px;padding:14px 16px;box-shadow:0 4px 16px rgba(46,82,254,0.2);">
+            <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:8px;">BC Annual Cost</div>
+            <div style="display:flex;align-items:baseline;gap:3px;">
+              <span style="font-size:14px;color:rgba(255,255,255,0.8);font-weight:600;">&pound;</span>
+              <input id="roi-bc-cost" type="number" value="24000" min="0" style="width:88px;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.4);color:#fff;padding:2px 2px;font-size:17px;font-weight:700;outline:none;font-family:inherit;">
+            </div>
+          </div>
+          <div style="flex:1;background:#2E52FE;border-radius:12px;padding:14px 16px;box-shadow:0 4px 16px rgba(46,82,254,0.2);">
+            <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:8px;">Return on Investment</div>
+            <div id="roi-multiple" style="font-size:26px;font-weight:900;color:#ffffff;line-height:1;">&mdash;</div>
+          </div>
+          <div style="flex:1;background:#2E52FE;border-radius:12px;padding:14px 16px;box-shadow:0 4px 16px rgba(46,82,254,0.2);">
+            <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:8px;">Payback Period</div>
+            <div id="roi-payback" style="font-size:26px;font-weight:900;color:#ffffff;line-height:1;">&mdash;</div>
+          </div>
+        </div>
+
+      </div><!-- end right -->
+    </div><!-- end two-col -->
+
+    <!-- Summary text (hidden, used by generator) -->
+    <div id="roi-summary-text" style="margin-top:32px;font-size:14px;line-height:1.75;color:rgba(11,27,50,0.7);"></div>
+
+  </div><!-- end container -->
+
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     CASE STUDIES
+═════════════════════════════════════════════════════════════ -->
+<section style="background:#0B1B32;padding:5rem 0;position:relative;overflow:hidden;">
+
+  <!-- Dot grid -->
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;"></div>
+  <!-- Top accent -->
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#28E289;"></div>
+
+  <div class="container" style="position:relative;">
+
+    <!-- Eyebrow -->
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+      <div style="height:1.5px;width:28px;background:#28E289;flex-shrink:0;"></div>
+      <span style="font-size:0.7rem;font-weight:800;color:#28E289;text-transform:uppercase;letter-spacing:0.32em;">Starting estimates</span>
+    </div>
+    <h2 style="color:#fff;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:3rem;">Cost of the Current Situation</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;">
+
+      <!-- LEFT: Hero number + chips -->
+      <div>
+        <div style="font-size:0.65rem;font-weight:700;color:rgba(40,226,137,0.7);text-transform:uppercase;letter-spacing:0.3em;margin-bottom:0.6rem;">Estimated Annual Cost</div>
+        <div style="font-size:clamp(56px,7vw,88px);font-weight:900;color:#28E289;line-height:0.9;letter-spacing:-0.05em;margin-bottom:0.75rem;" id="heroTotal">—</div>
+        <div style="font-size:1rem;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:2.5rem;">per year &nbsp;·&nbsp; <span id="heroPerYear">—</span> &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.7);" id="heroPerMonth">—</span></div>
+
+        <!-- Metric chips -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:2rem;">
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:0.75rem;padding:1rem;">
+            <div style="font-size:0.65rem;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.2em;margin-bottom:0.5rem;">ROI</div>
+            <div style="font-size:1.75rem;font-weight:900;color:#fff;line-height:1;" id="heroRoi">—</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:0.75rem;padding:1rem;">
+            <div style="font-size:0.65rem;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.2em;margin-bottom:0.5rem;">Payback</div>
+            <div style="font-size:1.75rem;font-weight:900;color:#fff;line-height:1;" id="heroPayback">—</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:0.75rem;padding:1rem;">
+            <div style="font-size:0.65rem;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.2em;margin-bottom:0.5rem;">BC Cost</div>
+            <div style="font-size:1.75rem;font-weight:900;color:#fff;line-height:1;" id="heroBcCost">—</div>
+          </div>
+        </div>
+
+        <!-- Cost of doing nothing -->
+        <div style="background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.2);border-radius:0.75rem;padding:1rem 1.25rem;">
+          <div style="font-size:0.65rem;font-weight:800;color:rgba(255,120,120,0.7);text-transform:uppercase;letter-spacing:0.22em;margin-bottom:0.4rem;">Cost of doing nothing</div>
+          <div style="font-size:1.3rem;font-weight:900;color:#ff6b6b;line-height:1;" id="heroCostNothing">— <span style="font-size:0.8rem;font-weight:500;color:rgba(255,120,120,0.6);">left on the table every month</span></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Breakdown bars -->
+      <div>
+        <div style="font-size:0.65rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.28em;margin-bottom:1.25rem;">Where your saving comes from</div>
+
+        <!-- Row: Workflow Automation -->
+        <div id="static-row-wf" style="margin-bottom:1.75rem;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.5rem;">
+            <span style="font-size:1rem;font-weight:700;color:#fff;">Manual admin &amp; processing</span>
+            <span style="font-size:1.3rem;font-weight:900;color:#fff;" id="static-wf">&mdash;</span>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.07);border-radius:99px;margin-bottom:0.4rem;">
+            <div id="bar-wf-static" style="height:100%;width:0%;background:rgba(255,255,255,0.5);border-radius:99px;"></div>
+          </div>
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.5;" id="static-wf-desc">Based on your inputs</div>
+        </div>
+
+        <!-- Row: Revenue Growth -->
+        <div id="static-row-rev" style="margin-bottom:1.75rem;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.5rem;">
+            <span style="font-size:1rem;font-weight:700;color:#fff;">Missed &amp; unconverted revenue</span>
+            <span style="font-size:1.3rem;font-weight:900;color:#fff;" id="static-rev">&mdash;</span>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.07);border-radius:99px;margin-bottom:0.4rem;">
+            <div id="bar-rev-static" style="height:100%;width:0%;background:rgba(255,255,255,0.5);border-radius:99px;"></div>
+          </div>
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.5;" id="static-rev-desc">Based on your inputs</div>
+        </div>
+
+        <!-- Row: OOH Call Handling -->
+        <div id="static-row-rec" style="margin-bottom:1.75rem;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.5rem;">
+            <span style="font-size:1rem;font-weight:700;color:#fff;">OOH call handling costs</span>
+            <span style="font-size:1.3rem;font-weight:900;color:#fff;" id="static-rec">&mdash;</span>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.07);border-radius:99px;margin-bottom:0.4rem;">
+            <div id="bar-rec-static" style="height:100%;width:0%;background:rgba(255,255,255,0.5);border-radius:99px;"></div>
+          </div>
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.5;" id="static-rec-desc">Based on your inputs</div>
+        </div>
+
+        <!-- Row: Advisor / Website -->
+        <div id="static-row-adv" style="margin-bottom:1.75rem;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.5rem;">
+            <span style="font-size:1rem;font-weight:700;color:#fff;">Uncaptured website leads</span>
+            <span style="font-size:1.3rem;font-weight:900;color:#fff;" id="static-adv">&mdash;</span>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.07);border-radius:99px;margin-bottom:0.4rem;">
+            <div id="bar-adv-static" style="height:100%;width:0%;background:rgba(255,255,255,0.5);border-radius:99px;"></div>
+          </div>
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.5;" id="static-adv-desc">Based on your inputs</div>
+        </div>
+
+        <!-- Row: Support / Retention -->
+        <div id="static-row-sup" style="margin-bottom:2rem;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.5rem;">
+            <span style="font-size:1rem;font-weight:700;color:#fff;">At-risk contract value</span>
+            <span style="font-size:1.3rem;font-weight:900;color:#fff;" id="static-sup">&mdash;</span>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.07);border-radius:99px;margin-bottom:0.4rem;">
+            <div id="bar-sup-static" style="height:100%;width:0%;background:rgba(255,255,255,0.5);border-radius:99px;"></div>
+          </div>
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.5;" id="static-sup-desc">Based on your inputs</div>
+        </div>
+
+        <!-- Divider + total -->
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:0.85rem;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">Total recoverable</span>
+          <span style="font-size:1.6rem;font-weight:900;color:#28E289;letter-spacing:-0.03em;"><span id="static-total">&mdash;</span></span>
+        </div>
+
+        <p style="margin-top:1rem;font-size:0.78rem;color:rgba(255,255,255,0.25);font-style:italic;line-height:1.6;">Estimates based on figures discussed in your conversation with Build Concierge &mdash; adjust inputs to match <span class="js-firstname">your</span> actual numbers.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     ROI CALCULATOR
+═════════════════════════════════════════════════════════════ -->
+<section style="background:#EBEBEF;padding:4.5rem 0;position:relative;overflow:hidden;">
+
+  <!-- Dot grid -->
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(11,27,50,0.045) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;"></div>
+  <!-- Top accent -->
+  <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#28E289 0%,#2E52FE 100%);"></div>
+
+  <div class="container" style="position:relative;">
+
+    <!-- Section header -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.75rem;gap:2rem;flex-wrap:wrap;">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.65rem;">
+          <div style="height:2px;width:24px;background:#28E289;flex-shrink:0;"></div>
+          <span style="font-size:0.68rem;font-weight:800;color:#28E289;text-transform:uppercase;letter-spacing:0.32em;">Proven in the field</span>
+        </div>
+        <h2 style="margin:0;font-size:clamp(1.7rem,2.4vw,2.5rem);font-weight:900;color:#0B1B32;line-height:1.08;letter-spacing:-0.03em;">Companies like yours.<br>Results like these.</h2>
+      </div>
+      <p style="margin:0;font-size:0.875rem;color:rgba(11,27,50,0.42);max-width:260px;text-align:right;line-height:1.65;flex-shrink:0;">Real operators. Real numbers.<br>No fluff, no vanity metrics.</p>
+    </div>
+
+    <!-- Cards grid -->
+    <div style="display:grid;grid-template-columns:1.45fr 1fr;gap:1.25rem;align-items:stretch;min-height:440px;">
+
+      <!-- ── CORB: full-bleed editorial card ── -->
+      <div style="border-radius:1.5rem;overflow:hidden;position:relative;">
+        <!-- Photo -->
+        <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/481174136_2658751527648436_2864857129492483294_n.jpg"
+          alt="Corb team" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
+        <!-- Gradient: subtle at top, solid at bottom -->
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,27,50,0.2) 0%,rgba(11,27,50,0.5) 30%,rgba(11,27,50,0.88) 62%,#0c1e38 100%);"></div>
+
+        <!-- Top badges row -->
+        <div style="position:absolute;top:1.5rem;left:1.5rem;right:1.5rem;display:flex;justify-content:space-between;align-items:center;z-index:2;">
+          <div style="background:rgba(40,226,137,0.2);border:1px solid rgba(40,226,137,0.5);border-radius:7px;padding:5px 13px;">
+            <span style="font-size:0.62rem;font-weight:800;color:#28E289;text-transform:uppercase;letter-spacing:0.2em;">Case Study</span>
+          </div>
+          <div style="background:rgba(0,0,0,0.3);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:99px;padding:5px 14px;">
+            <span style="font-size:0.62rem;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:0.08em;">Facilities Maintenance &nbsp;·&nbsp; Nationwide</span>
+          </div>
+        </div>
+
+        <!-- Bottom content -->
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem;z-index:2;">
+
+          <!-- 3 frosted stat chips -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.65rem;margin-bottom:1.6rem;">
+            <div style="background:rgba(255,255,255,0.07);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.11);border-radius:0.85rem;padding:0.9rem 1rem;">
+              <div style="font-size:1.8rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.03em;">15<span style="font-size:0.42em;color:rgba(255,255,255,0.45);font-weight:600;margin-left:4px;">hrs/day</span></div>
+              <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.14em;margin-top:5px;">Admin eliminated</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.07);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.11);border-radius:0.85rem;padding:0.9rem 1rem;">
+              <div style="font-size:1.8rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.03em;">8<span style="font-size:0.42em;color:rgba(255,255,255,0.45);font-weight:600;margin-left:4px;">portals</span></div>
+              <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.14em;margin-top:5px;">Fully automated</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.07);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.11);border-radius:0.85rem;padding:0.9rem 1rem;">
+              <div style="font-size:1.8rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.03em;">5<span style="font-size:0.42em;color:rgba(255,255,255,0.45);font-weight:600;margin-left:4px;">planners</span></div>
+              <div style="font-size:0.58rem;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.14em;margin-top:5px;">Freed for higher work</div>
+            </div>
+          </div>
+
+          <!-- Quote -->
+          <p style="margin:0 0 1.25rem;font-size:1rem;font-weight:500;color:rgba(255,255,255,0.85);line-height:1.65;font-style:italic;">&ldquo;I was sold in the first five minutes of the demo. It became a no brainer &mdash; our team was spending 15 hours a day on admin tasks AI could do.&rdquo;</p>
+
+          <!-- Attribution + CTA -->
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#28E289;flex-shrink:0;"></div>
+              <div>
+                <div style="font-size:0.82rem;font-weight:700;color:#fff;">Amy Charman</div>
+                <div style="font-size:0.72rem;color:rgba(255,255,255,0.38);">Operations Manager, Corb</div>
+              </div>
+            </div>
+            <a href="https://www.buildconcierge.com/case-studies/corb" target="_blank"
+              style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);border-radius:99px;padding:8px 18px;font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-decoration:none;white-space:nowrap;transition:all 0.2s;flex-shrink:0;"
+              onmouseover="this.style.background='rgba(255,255,255,0.14)';this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.25)'"
+              onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.color='rgba(255,255,255,0.6)';this.style.borderColor='rgba(255,255,255,0.13)'">
+              Full case study &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── RIGHT: AGS + S'OBrien stacked ── -->
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+        <!-- AGS testimonial card -->
+        <div style="flex:1;border-radius:1.5rem;background:#ffffff;box-shadow:0 2px 28px rgba(11,27,50,0.09);padding:1.85rem;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;">
+          <!-- Decorative giant quote mark -->
+          <div style="position:absolute;top:-18px;right:16px;font-size:130px;line-height:1;font-weight:900;color:rgba(46,82,254,0.07);font-family:Georgia,serif;pointer-events:none;user-select:none;">&ldquo;</div>
+          <!-- AGS logo badge -->
+          <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(11,27,50,0.05);border:1px solid rgba(11,27,50,0.1);border-radius:99px;padding:4px 12px;margin-bottom:1rem;align-self:flex-start;">
+            <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/ags-one-logo.webp" style="height:16px;width:auto;object-fit:contain;opacity:0.75;" alt="AGS">
+          </div>
+          <p style="margin:0 0 1.25rem;font-size:0.95rem;font-weight:500;color:rgba(11,27,50,0.72);line-height:1.65;font-style:italic;position:relative;">&ldquo;What used to take 5&ndash;10 minutes per job now happens instantly. We&rsquo;re scaling faster, with fewer errors and no extra admin staff.&rdquo;</p>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/Photo-David-McMillan-AGS.webp"
+              style="width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid rgba(40,226,137,0.5);flex-shrink:0;" alt="David McMillan">
+            <div>
+              <p style="margin:0;font-size:0.8rem;font-weight:700;color:#0B1B32;">David McMillan</p>
+              <p style="margin:0;font-size:0.7rem;color:rgba(11,27,50,0.45);">AGS One &ndash; Specialist Cleaning &amp; Pest Control</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- S'OBrien photo card -->
+        <div style="flex:1;border-radius:1.5rem;overflow:hidden;position:relative;">
+          <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/SOBrien-Vans.webp"
+            alt="S'OBrien Heating Solutions fleet" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,27,50,0.15) 0%,rgba(11,27,50,0.82) 55%,#0c1e38 100%);"></div>
+          <div style="position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:1.85rem;">
+            <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:99px;padding:4px 12px;margin-bottom:1rem;align-self:flex-start;backdrop-filter:blur(6px);">
+              <span style="font-size:0.62rem;font-weight:700;color:rgba(255,255,255,0.65);letter-spacing:0.08em;">S O&rsquo;Brien Heating Solutions</span>
+            </div>
+            <p style="margin:0 0 1.1rem;font-size:0.95rem;font-weight:500;color:rgba(255,255,255,0.82);line-height:1.65;font-style:italic;">&ldquo;Build Concierge has allowed my office team to concentrate on customers rather than being bogged down with tedious admin tasks.&rdquo;</p>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#28E289;flex-shrink:0;"></div>
+              <span style="font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.65);">S. O&rsquo;Brien</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     ACTIVATION & TRAINING + POST-ACTIVATION SUPPORT
+═════════════════════════════════════════════════════════════ -->
+<section style="background:linear-gradient(135deg,#cde8e6 0%,#f5f5f2 45%,#f5e4cc 100%);padding:5rem 0;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(11,27,50,0.04) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#28E289 0%,#2E52FE 100%);"></div>
+
+  <div class="container" style="position:relative;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+
+      <!-- Left: content -->
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem;">
+            <div style="height:1.5px;width:28px;background:#2E52FE;flex-shrink:0;"></div>
+            <span style="font-size:0.68rem;font-weight:800;color:#2E52FE;text-transform:uppercase;letter-spacing:0.32em;">Activation &amp; Training</span>
+          </div>
+          <h2 style="margin:0 0 0.85rem;font-size:clamp(1.7rem,2.6vw,2.5rem);font-weight:900;line-height:1.08;letter-spacing:-0.03em;color:#0B1B32;">We hold your hand<br><em style="color:#28E289;font-style:normal;">every step of the way.</em></h2>
+          <p style="margin:0;font-size:0.97rem;line-height:1.7;color:rgba(11,27,50,0.65);max-width:440px;">We know FM isn't always the most software-savvy space — and that's exactly why we built our onboarding around you. No three-month rollouts. No being left to figure it out alone. Just dedicated, hands-on support from day one.</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:0.85rem;">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="width:22px;height:22px;border-radius:50%;background:rgba(40,226,137,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#1aaa6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="font-size:0.9rem;color:rgba(11,27,50,0.8);line-height:1.55;"><strong style="color:#0B1B32;">Hypercare throughout</strong> — your dedicated success manager is with you from onboarding through to day-to-day operations.</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="width:22px;height:22px;border-radius:50%;background:rgba(40,226,137,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#1aaa6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="font-size:0.9rem;color:rgba(11,27,50,0.8);line-height:1.55;"><strong style="color:#0B1B32;">Plain-English training</strong> — no jargon, no assumptions. We meet your team where they are.</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="width:22px;height:22px;border-radius:50%;background:rgba(40,226,137,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#1aaa6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="font-size:0.9rem;color:rgba(11,27,50,0.8);line-height:1.55;"><strong style="color:#0B1B32;">Ongoing support</strong> — as you grow, we grow with you. No contract cliff edges.</span>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <!-- Right: photo -->
+      <div style="border-radius:1.5rem;overflow:hidden;height:480px;position:relative;box-shadow:0 16px 48px rgba(11,27,50,0.14);">
+        <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/SimonCustomer.jpg"
+          alt="Build Concierge customer onboarding"
+          style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+        <!-- subtle overlay for depth -->
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,27,50,0.35) 100%);pointer-events:none;"></div>
+      </div>
+
+    </div>
+
+    <!-- Divider -->
+    <div style="border-top:1px solid rgba(11,27,50,0.08);margin:4rem 0;"></div>
+
+  </div>
+  <div class="container" style="position:relative;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+
+      <!-- Left: photo -->
+      <div style="border-radius:1.5rem;overflow:hidden;height:520px;position:relative;box-shadow:0 16px 48px rgba(11,27,50,0.14);">
+        <div style="position:absolute;right:0;top:0;bottom:0;width:56px;background:linear-gradient(270deg,rgba(240,245,242,0.9),transparent);z-index:2;pointer-events:none;"></div>
+        <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/SaulGroupCustomer.jpeg"
+          alt="Build Concierge UK Support Team"
+          style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+      </div>
+
+      <!-- Right: content -->
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+
+        <!-- Eyebrow -->
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="height:1.5px;width:28px;background:rgba(11,27,50,0.2);flex-shrink:0;"></div>
+          <span style="font-size:0.68rem;font-weight:800;color:rgba(11,27,50,0.45);text-transform:uppercase;letter-spacing:0.32em;">Post-Activation Support</span>
+          <div style="height:1.5px;width:28px;background:rgba(11,27,50,0.2);flex-shrink:0;"></div>
+        </div>
+
+        <!-- Headline + subhead -->
+        <div>
+          <h2 style="margin:0 0 0.85rem;font-size:clamp(1.7rem,2.6vw,2.5rem);font-weight:900;line-height:1.08;letter-spacing:-0.03em;color:#0B1B32;">We don't disappear <em style="color:#28E289;font-style:normal;">after go-live.</em></h2>
+          <p style="margin:0;font-size:0.97rem;line-height:1.7;color:rgba(11,27,50,0.55);max-width:440px;">Once you're live and trained, our UK-based support team is always on hand. Whether it's a question on day two or a workflow tweak six months in — we're here. Every call, email and chat goes straight to an in-house expert who knows your platform, not a script.</p>
+        </div>
+
+        <!-- Three channel cards -->
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+
+          <div style="display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);border-radius:14px;padding:16px 20px;border:1px solid rgba(255,255,255,0.9);">
+            <div style="width:40px;height:40px;border-radius:12px;background:rgba(40,226,137,0.15);border:1px solid rgba(40,226,137,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span class="material-symbols-outlined" style="font-size:20px;color:#0B8A4C;">phone_in_talk</span>
+            </div>
+            <div>
+              <div style="font-size:0.87rem;font-weight:700;color:#0B1B32;line-height:1.3;">Phone Support</div>
+              <div style="font-size:0.78rem;color:rgba(11,27,50,0.5);margin-top:2px;">Post-go-live questions answered by a real person. No IVR maze, no offshore queue.</div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);border-radius:14px;padding:16px 20px;border:1px solid rgba(255,255,255,0.9);">
+            <div style="width:40px;height:40px;border-radius:12px;background:rgba(46,82,254,0.1);border:1px solid rgba(46,82,254,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span class="material-symbols-outlined" style="font-size:20px;color:#2E52FE;">mark_email_read</span>
+            </div>
+            <div>
+              <div style="font-size:0.87rem;font-weight:700;color:#0B1B32;line-height:1.3;">Email Support</div>
+              <div style="font-size:0.78rem;color:rgba(11,27,50,0.5);margin-top:2px;">Drop us a line any time after activation — detailed answers, not auto-replies.</div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);border-radius:14px;padding:16px 20px;border:1px solid rgba(255,255,255,0.9);">
+            <div style="width:40px;height:40px;border-radius:12px;background:rgba(46,82,254,0.1);border:1px solid rgba(46,82,254,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span class="material-symbols-outlined" style="font-size:20px;color:#2E52FE;">chat_bubble</span>
+            </div>
+            <div>
+              <div style="font-size:0.87rem;font-weight:700;color:#0B1B32;line-height:1.3;">Live Chat</div>
+              <div style="font-size:0.78rem;color:rgba(11,27,50,0.5);margin-top:2px;">In-platform help the moment you need it — long after training day is done.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Trust badges -->
+        <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:7px;">
+            <span class="material-symbols-outlined" style="font-size:16px;color:#0B8A4C;font-variation-settings:'FILL' 1;">verified</span>
+            <span style="font-size:0.7rem;font-weight:700;color:rgba(11,27,50,0.6);text-transform:uppercase;letter-spacing:0.08em;">UK-Based Team</span>
+          </div>
+          <div style="width:1px;height:16px;background:rgba(11,27,50,0.12);"></div>
+          <div style="display:flex;align-items:center;gap:7px;">
+            <span class="material-symbols-outlined" style="font-size:16px;color:#2E52FE;">apartment</span>
+            <span style="font-size:0.7rem;font-weight:700;color:rgba(11,27,50,0.6);text-transform:uppercase;letter-spacing:0.08em;">Fully In-House</span>
+          </div>
+          <div style="width:1px;height:16px;background:rgba(11,27,50,0.12);"></div>
+          <div style="display:flex;align-items:center;gap:7px;">
+            <span class="material-symbols-outlined" style="font-size:16px;color:#2E52FE;">school</span>
+            <span style="font-size:0.7rem;font-weight:700;color:rgba(11,27,50,0.6);text-transform:uppercase;letter-spacing:0.08em;">Expert Trained</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     NEXT STEPS
+═════════════════════════════════════════════════════════════ -->
+<section id="next-steps">
+  <div class="container">
+    <div class="section-title">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:rgba(255,255,255,0.5);"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+      <h2>Next Steps</h2>
+      <p>Here's what we agreed — and what happens next.</p>
+    </div>
+
+    <!-- Step cards rendered by JS from PROSPECT.nextSteps -->
+    <div id="steps-container" class="steps-grid"></div>
+
+    <div class="cta-block">
+      <div class="cta-block-text">
+        <h3>Ready to move forward, <span class="js-firstname-bare">there</span>?</h3>
+        <p>What we've shown you isn't a process problem — it's a software gap. Build Concierge closes it. Get in touch and we can have your first automation live within weeks.</p>
+      </div>
+      <div class="cta-block-actions">
+        <a id="btn-reply" href="mailto:" class="btn btn-accent">Reply to <span class="js-rep-firstname">us</span></a>
+      </div>
+    </div>
+
+    <div class="rep-card">
+      <div id="rep-avatar" class="rep-avatar">BC</div>
+      <div>
+        <div id="rep-name-el" class="rep-name">Build Concierge</div>
+        <div class="rep-role">Account Executive · Build Concierge</div>
+        <a id="rep-email-el" class="rep-email" href="mailto:">—</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     FOOTER
+═════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge-public-assets/refs/heads/main/build-concierge-white.png" alt="Build Concierge">
+    <p>© 2026 Build Concierge &nbsp;·&nbsp; Confidential — prepared exclusively for <span class="js-company">your business</span> &nbsp;·&nbsp; buildconcierge.com</p>
+  </div>
+</footer>
+\n
+<script>
+  // ══════════════════════════════════════════════════════════════
+  //  PROSPECT DATA — populated by ROI Generator. Do not edit.
+  // ══════════════════════════════════════════════════════════════
+  const PROSPECT = {
+    companyName:  "Nelson Dish & Glasswashing Machines",
+    firstName:    "Ollie",
+    meetingDate:  "Unknown",
+    repName:      "Eddie Surtees",
+    repEmail:     "eddie.surtees@buildconcierge.com",
+    repInitials:  "ES",
+    meetingUrl:   "",
+    pains:        [{"label":"Email to Job","headline":"Manual email intake creates delays and errors","body":"Emails arrive, admin manually reads them, calls customers to confirm, takes payment details, then re-keys everything into BigChange. This entire manual round trip happens for every inbound email. It's time-consuming, error-prone, and delays job creation.","recoverable":"Absorbed in back-office overhead"},{"label":"Portal Job Creation","headline":"Brittle regex scraping drops edge cases on Pronet & Access Maintain","body":"Pronet jobs are scraped into BigChange automatically, but the integration is built on rigid regex pattern matching — if the incoming data doesn't match exactly, the job fails or doesn't complete. There's no intelligence behind it, so any variation in how a client formats their data breaks the process. Build Concierge's AI actually reads and interprets the document contextually, the way a human would, making it far more robust when handling edge cases and formatting variations.","recoverable":"Time recoverable with automation"},{"label":"Stock Reconciliation","headline":"Daily manual stock matching creates admin burden","body":"When 16 engineers log stock usage on jobs, it must be manually matched to the correct stock line in BigChange. With this volume of road staff, mismatches and manual corrections are a daily problem consuming significant admin time.","recoverable":"Absorbed in back-office overhead"},{"label":"WhatsApp Purchase Orders","headline":"Engineers still ring the office for POs — Build Concierge changes that","body":"We showed you during our call how an engineer can request a PO directly over WhatsApp and have it created in BigChange automatically — no call to the office, no manual re-keying, just an instant confirmation back to the engineer. Right now that entire loop is manual. This is a workflow you can have running from day one.","recoverable":"Time recoverable with automation"},{"label":"Report Review","headline":"Completed job reports sit unreviewed, follow-on works get missed","body":"Job reports stay in BigChange until someone finds time to read them. Follow-on works and remedial quotes are spotted or missed depending on daily admin capacity. AI can review every completed job card automatically and flag anything that needs quoting, chasing, or escalating — nothing falls through the cracks.","recoverable":"Revenue recoverable with automation"},{"label":"Quote Follow-ups","headline":"Quote follow-ups are entirely reliant on salespeople remembering","body":"There's no systematic process for chasing outstanding quotes. If a salesperson forgets or gets busy, the opportunity goes cold. Build Concierge can monitor open quotes in BigChange and automatically trigger follow-up reminders or communications at the right intervals — so no quote is ever left to go silent.","recoverable":"Revenue recoverable with automation"},{"label":"Call Transcription","headline":"Call context is lost — nothing makes it into BigChange","body":"When engineers or office staff take calls, the detail from those conversations disappears. There's no transcription, no automatic note logged against the job, no way to reference what was said. Build Concierge's AI voice and transcription capability captures that context and pushes it straight into BigChange as a note — so the job record always tells the full story.","recoverable":"Operational risk reduced"},{"label":"AI Voice","headline":"Out-of-hours and overflow calls go unanswered or unlogged","body":"Calls that come in outside office hours, or when the team is at capacity, either go to voicemail or get missed entirely. An AI voice agent can handle those calls, qualify the job, capture the details, and create the job in BigChange automatically — so no enquiry is ever lost.","recoverable":"Revenue recoverable with automation"}],
+    nextSteps:    [{"title":"Call on Friday","body":"Ollie and Eddie to connect on Friday to review the business case, go through any questions, and agree next steps to move forward."}],
+    quote:        null,
+    currentState: ["Emails manually read, confirmed, and re-keyed into BigChange for every job","Pronet portal jobs scraped via brittle regex — edge cases fail and require manual fixing","16 engineers log stock daily; office manually matches each entry to the correct BigChange line","Engineers ring the office to request POs; staff create them manually and send the number back","Completed job cards sit unreviewed until admin capacity allows — remedials and follow-ons get missed","Quote follow-ups rely entirely on salespeople remembering — no systematic chasing process","Call details not transcribed or logged — context lost, nothing pushed into BigChange","Out-of-hours and overflow calls missed or go to voicemail with no automated capture"],
+    futureState:  ["Emails parsed by AI and auto-created as jobs in BigChange within seconds","Portal jobs from Pronet and Access Maintain captured accurately regardless of formatting variations","Stock usage auto-matched to correct BigChange line items — no manual intervention required","Engineers request POs over WhatsApp; BigChange creates them instantly and confirms back automatically","Every completed job card reviewed by AI — follow-on works and remedials flagged and quoted proactively","Open quotes monitored automatically; follow-up comms triggered at the right time without manual chasing","Every call transcribed and summarised; key detail pushed into BigChange as a note against the job","AI voice agent handles out-of-hours and overflow calls, qualifies jobs, and creates them in BigChange"],
+    calcDefaults: {"wf-staff":5,"wf-salary":28,"wf-pct":50,"rev-leads":8,"rev-avgval":2500,"rev-uplift":25,"rec-ooh":500,"adv-chatbot":0,"adv-leads":5,"adv-val":1500,"sup-contracts":100000,"sup-churn":15},
+    stats:        [{"value":"16","label":"Engineers on road"},{"value":"5","label":"Admin staff"}],
+    workflows:    [{"title":"Email to Job","description":"Incoming emails parsed and auto-created as jobs in BigChange","icon":"email"},{"title":"Portal Job Creation","description":"Pronet & Access Maintain jobs synced accurately to BigChange via AI — not regex","icon":"copy"},{"title":"Stock Reconciliation","description":"Engineer-logged stock auto-matched to correct BigChange line items daily","icon":"sync"},{"title":"WhatsApp PO Automation","description":"Engineers request POs over WhatsApp; BigChange creates and confirms instantly","icon":"card"},{"title":"Report Review","description":"Completed job cards reviewed by AI — remedials and follow-ons flagged proactively","icon":"check"},{"title":"Quote Follow-up","description":"Open quotes monitored and follow-up comms triggered automatically","icon":"chart"},{"title":"Call Transcription","description":"Every call transcribed and key detail pushed into BigChange as a job note","icon":"phone"},{"title":"AI Voice Agent","description":"Out-of-hours and overflow calls handled by AI — jobs created automatically","icon":"phone"}]
+  };
+
+  // ── Personalisation init ──────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function () {
+    var P = PROSPECT;
+    var co = P.companyName;
+    var fn = P.firstName;
+
+    document.title = co + ' · Business Case for Build Concierge';
+
+    var heroHl = document.getElementById('hero-headline');
+    if (heroHl) heroHl.innerHTML = 'The Build Concierge Business Case<br>for <span style="color:var(--bc-green);">' + co + '</span>';
+    var heroSub = document.getElementById('hero-subhead');
+    if (heroSub) heroSub.textContent = 'A tailored business case for ' + co + ' — showing exactly where the time is going and how Build Concierge recovers it.';
+    var rewatchBtn = document.getElementById('btn-rewatch');
+    if (rewatchBtn) { rewatchBtn.href = P.meetingUrl || '#'; if (!P.meetingUrl) rewatchBtn.style.display = 'none'; }
+
+    var discEyebrow = document.getElementById('discovery-eyebrow');
+    if (discEyebrow) discEyebrow.textContent = 'Discovery Call';
+    var discHl = document.getElementById('discovery-headline');
+    if (discHl) discHl.innerHTML = 'What you told us about<br>how <span style="color:var(--bc-blue);">' + co + ' operates today.</span>';
+    var discAttr = document.getElementById('discovery-attribution');
+    if (discAttr) discAttr.innerHTML = '';
+
+    document.querySelectorAll('.js-company').forEach(function (el) { el.textContent = co; });
+    document.querySelectorAll('.js-firstname').forEach(function (el) { el.textContent = fn + "'s"; });
+    document.querySelectorAll('.js-firstname-bare').forEach(function (el) { el.textContent = fn; });
+
+    var repFirstName = P.repName.split(' ')[0];
+    document.querySelectorAll('.js-rep-firstname').forEach(function (el) { el.textContent = repFirstName; });
+    var btnReply = document.getElementById('btn-reply');
+    if (btnReply) btnReply.href = 'mailto:' + P.repEmail;
+    var repAvatar = document.getElementById('rep-avatar');
+    if (repAvatar) repAvatar.textContent = P.repInitials;
+    var repNameEl = document.getElementById('rep-name-el');
+    if (repNameEl) repNameEl.textContent = P.repName;
+    var repEmailEl = document.getElementById('rep-email-el');
+    if (repEmailEl) { repEmailEl.textContent = P.repEmail; repEmailEl.href = 'mailto:' + P.repEmail; }
+
+    renderStats(P.stats);
+    renderWorkflows(P.workflows);
+    renderPainCards(P.pains);
+    renderQuote(P.quote);
+    renderNextSteps(P.nextSteps);
+    renderStateBullets(P.currentState, 'current-state-list');
+    renderStateBullets(P.futureState, 'future-state-list');
+
+    // Init ROI calc fields from calcDefaults
+    var cd = P.calcDefaults || {};
+    Object.keys(cd).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && cd[id] !== undefined) el.value = cd[id];
+    });
+    ['wf-staff','wf-salary','wf-pct','rev-leads','rev-avgval','rev-uplift',
+     'rec-ooh','adv-chatbot','adv-leads','adv-val','sup-contracts','sup-churn','roi-bc-cost']
+    .forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('input', calcROI);
+    });
+
+    calcROI();
+  });
+
+  // ── Stats renderer ──────────────────────────────────────
+  function renderStats(items) {
+    var grid = document.getElementById('bc-stats-grid');
+    if (!grid || !items || !items.length) return;
+    grid.innerHTML = items.map(function(s) {
+      return '<div style="background:rgba(255,255,255,0.05);padding:1.1rem 0.75rem;text-align:center;">'
+        + '<div style="font-size:1.55rem;font-weight:800;color:#fff;line-height:1;">' + escHtml(s.value) + '</div>'
+        + '<div style="font-size:0.65rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.05em;margin-top:4px;">' + escHtml(s.label) + '</div>'
+        + '</div>';
+    }).join('');
+    var cols = Math.min(items.length, 4);
+    grid.style.gridTemplateColumns = 'repeat(' + cols + ',1fr)';
+  }
+
+  // ── Workflows renderer ──────────────────────────────────
+  var WORKFLOW_ICONS = {
+    copy:   '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2"/><rect x="8" y="8" width="12" height="12" rx="2"/></svg>',
+    file:   '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+    phone:  '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>',
+    card:   '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>',
+    search: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+    chart:  '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
+    check:  '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+    email:  '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+    clock:  '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+    sync:   '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>'
+  };
+
+  function renderWorkflows(items) {
+    var grid = document.getElementById('bc-workflows-grid');
+    var subtitle = document.getElementById('bc-workflows-subtitle');
+    if (!grid || !items || !items.length) return;
+    var n = items.length;
+    if (subtitle) subtitle.textContent = n + ' workflow' + (n !== 1 ? 's' : '') + ' running manually today — handled automatically from day one.';
+    var cols = n <= 2 ? 2 : 3;
+    grid.style.gridTemplateColumns = 'repeat(' + cols + ',1fr)';
+    grid.innerHTML = items.map(function(w) {
+      var icon = WORKFLOW_ICONS[w.icon] || WORKFLOW_ICONS.sync;
+      return '<div style="background:#fff;border-radius:0.75rem;padding:1.75rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;">'
+        + '<div style="width:42px;height:42px;min-width:42px;background:var(--bc-blue);border-radius:0.5rem;display:flex;align-items:center;justify-content:center;">'
+        + icon
+        + '</div>'
+        + '<div>'
+        + '<div style="font-weight:700;color:var(--bc-dark-blue);margin-bottom:0.3rem;">' + escHtml(w.title) + '</div>'
+        + '<div style="font-size:0.875rem;color:#6b7280;line-height:1.5;">' + escHtml(w.description) + '</div>'
+        + '</div>'
+        + '</div>';
+    }).join('');
+  }
+
+  // ── Pain card renderer ────────────────────────────────────────
+  var PAIN_ICONS = [
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>',
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>',
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg>',
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6A2 2 0 014.11 2h3a2 2 0 012 1.72 12.05 12.05 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>'
+  ];
+
+  function escHtml(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function painCardHTML(pain, num) {
+    var icon = PAIN_ICONS[(num - 1) % PAIN_ICONS.length];
+    var ns = num < 10 ? '0' + num : '' + num;
+    return '<div style="background:rgba(255,255,255,0.82);border:1px solid rgba(255,255,255,0.95);border-radius:var(--border-radius);padding:1.75rem;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(11,27,50,0.07);">'
+      + '<div style="position:absolute;top:-10px;right:16px;font-size:5.5rem;font-weight:900;color:rgba(11,27,50,0.04);line-height:1;pointer-events:none;user-select:none;">' + ns + '</div>'
+      + '<div style="width:46px;height:46px;border-radius:12px;background:var(--bc-blue);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;">' + icon + '</div>'
+      + '<div style="font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.16em;color:var(--bc-blue);margin-bottom:0.5rem;">' + escHtml(pain.label) + '</div>'
+      + '<div style="font-size:1.05rem;font-weight:700;color:var(--bc-dark-blue);line-height:1.3;margin-bottom:0.6rem;">' + escHtml(pain.headline) + '</div>'
+      + '<p style="font-size:0.85rem;color:rgba(11,27,50,0.55);line-height:1.6;margin:0;">' + escHtml(pain.body) + '</p>'
+      + '<div style="margin-top:1.1rem;padding-top:1rem;border-top:1px solid rgba(11,27,50,0.08);font-size:0.8rem;font-weight:700;color:var(--bc-blue);">' + escHtml(pain.recoverable) + '</div>'
+      + '</div>';
+  }
+
+  function renderPainCards(pains) {
+    if (!pains || !pains.length) return;
+    var top = document.getElementById('pain-container-top');
+    var mid = document.getElementById('pain-container-mid');
+    var bot = document.getElementById('pain-container-bottom');
+    if (!top) return;
+    var tp = pains.slice(0,3), mp = pains.slice(3,6), bp = pains.slice(6);
+    tp.forEach(function(p,i){ top.innerHTML += painCardHTML(p,i+1); });
+    if (mid) mp.forEach(function(p,i){ mid.innerHTML += painCardHTML(p,i+4); });
+    if (bot) bp.forEach(function(p,i){ bot.innerHTML += painCardHTML(p,i+7); });
+    if (bot && bp.length===1) bot.style.gridTemplateColumns='1fr';
+    if (bot && bp.length===0) bot.style.display='none';
+    if (mid && mp.length===0) mid.style.display='none';
+    if (mid && mp.length<3) mid.style.gridTemplateColumns='repeat('+mp.length+',1fr)';
+    if (tp.length<3) top.style.gridTemplateColumns='repeat('+tp.length+',1fr)';
+  }
+
+  function renderQuote(q) {
+    var el = document.getElementById('discovery-quote');
+    if (!q || !q.text || !el) return;
+    el.innerHTML = '<div style="background:var(--bc-white);border-left:5px solid var(--bc-blue);border-radius:0 var(--border-radius) var(--border-radius) 0;padding:2rem 2.5rem;display:flex;gap:1.5rem;align-items:flex-start;box-shadow:0 4px 20px rgba(11,27,50,0.07);">'
+      + '<div style="font-size:3.5rem;line-height:1;color:var(--bc-blue);font-weight:900;flex-shrink:0;margin-top:-0.3rem;">&ldquo;</div>'
+      + '<div><p style="font-size:1.05rem;font-style:italic;color:var(--bc-dark-blue);line-height:1.75;margin-bottom:0.75rem;">' + escHtml(q.text) + '</p>'
+      + '<cite style="font-style:normal;font-size:0.83rem;font-weight:700;color:rgba(11,27,50,0.4);">' + escHtml(q.author) + '</cite></div></div>';
+  }
+
+  function renderNextSteps(steps) {
+    var el = document.getElementById('steps-container');
+    if (!el) return;
+    if (!steps || !steps.length) {
+      el.innerHTML = '<div class="step-card"><div class="step-num">1</div><h4>Onboarding Scoping Call</h4><p>A 45-minute working session to map your BigChange workflow and the automations you want to build first.</p></div>'
+        + '<div class="step-card"><div class="step-num">2</div><h4>Build &amp; Trial (2–3 weeks)</h4><p>We build your first automation in shadow mode so you can verify outputs before going live.</p></div>'
+        + '<div class="step-card"><div class="step-num">3</div><h4>Live &amp; Expanding</h4><p>Once validated, we add further workflows. Most customers are fully live within 4–6 weeks of sign-off.</p></div>';
+      return;
+    }
+    steps.forEach(function(s,i){ el.innerHTML += '<div class="step-card"><div class="step-num">'+(i+1)+'</div><h4>'+escHtml(s.title)+'</h4><p>'+escHtml(s.body)+'</p></div>'; });
+  }
+
+  function renderStateBullets(items, listId) {
+    var ul = document.getElementById(listId);
+    if (!ul || !items || !items.length) return;
+    ul.innerHTML = items.map(function(t){ return '<li>'+escHtml(t)+'</li>'; }).join('');
+  }
+
+  // ── ROI Calculator — updates BOTH the hero section AND the calc panel ──
+  function fmtGbp(n) { if (!isFinite(n)) return '—'; return '£' + Math.round(n).toLocaleString('en-GB'); }
+  function setEl(id, val) { var e=document.getElementById(id); if(e) e.textContent=val; }
+  function setElHtml(id, val) { var e=document.getElementById(id); if(e) e.innerHTML=val; }
+  function setWidth(id, pct) { var e=document.getElementById(id); if(e) e.style.width=pct.toFixed(1)+'%'; }
+
+  function calcROI() {
+    var wfStaff     = parseFloat(document.getElementById('wf-staff').value)     || 0;
+    var wfSalary    = parseFloat(document.getElementById('wf-salary').value)     || 0;
+    var wfPct       = parseFloat(document.getElementById('wf-pct').value)        || 0;
+    var revLeads    = parseFloat(document.getElementById('rev-leads').value)     || 0;
+    var revAvgVal   = parseFloat(document.getElementById('rev-avgval').value)    || 0;
+    var revUplift   = parseFloat(document.getElementById('rev-uplift').value);
+    if (isNaN(revUplift) || document.getElementById('rev-uplift').value === '') revUplift = 20;
+    var recOoh      = parseFloat(document.getElementById('rec-ooh').value)       || 0;
+    var advChatbot  = parseFloat(document.getElementById('adv-chatbot').value)   || 0;
+    var advLeads    = parseFloat(document.getElementById('adv-leads').value)     || 0;
+    var advVal      = parseFloat(document.getElementById('adv-val').value)       || 0;
+    var supContracts = parseFloat(document.getElementById('sup-contracts').value)|| 0;
+    var supChurn    = parseFloat(document.getElementById('sup-churn').value);
+    if (isNaN(supChurn) || document.getElementById('sup-churn').value === '') supChurn = 15;
+    var bcCost      = parseFloat(document.getElementById('roi-bc-cost').value)   || 24000;
+
+    // True employer cost (UK 2025/26 rates)
+    var gross    = wfSalary * 1000;
+    var ni       = wfSalary > 0 ? Math.max(0, (gross - 5000) * 0.15) : 0;
+    var pension  = wfSalary > 0 ? Math.max(0, (Math.min(gross, 50270) - 6240) * 0.03) : 0;
+    var trueCost = gross + ni + pension;
+
+    // Annual savings per driver
+    var wfAnnual  = (wfStaff > 0 && wfSalary > 0 && wfPct > 0) ? wfStaff * trueCost * (wfPct / 100) : 0;
+    var revAnnual = (revLeads > 0 && revAvgVal > 0) ? revLeads * revAvgVal * (revUplift / 100) * 12 : 0;
+    var recAnnual = recOoh * 12;
+    var advAnnual = (advChatbot + (advLeads > 0 && advVal > 0 ? advLeads * advVal : 0)) * 12;
+    var supAnnual = supContracts > 0 ? supContracts * (supChurn / 100) : 0;
+
+    var total         = wfAnnual + revAnnual + recAnnual + advAnnual + supAnnual;
+    var roiMultiple   = (bcCost > 0 && total > 0) ? (total / bcCost).toFixed(1) + '\u00d7' : '\u2014';
+    var paybackMonths = (total > 0 && bcCost > 0) ? Math.ceil(bcCost / (total / 12)) + ' mo' : '\u2014';
+    var safeTotal     = total || 1;
+
+    // Hero section
+    setEl('heroTotal',       total > 0 ? fmtGbp(total) : '\u2014');
+    setEl('heroPerYear',     total > 0 ? fmtGbp(total) + ' / yr' : '\u2014');
+    setEl('heroPerMonth',    total > 0 ? fmtGbp(total / 12) + ' / mo' : '\u2014');
+    setEl('heroRoi',         roiMultiple);
+    setEl('heroPayback',     paybackMonths);
+    setEl('heroBcCost',      bcCost > 0 ? fmtGbp(bcCost) : '\u2014');
+    setEl('heroCostNothing', total > 0 ? fmtGbp(total / 12) : '\u2014');
+    // Calculator right-panel display
+    setEl('roi-annual',   total > 0 ? fmtGbp(total) : '\u00a30');
+    setEl('roi-multiple', roiMultiple);
+    setEl('roi-payback',  paybackMonths);
+
+    // Static breakdown rows
+    function updateRow(id, barId, descId, annual, descText) {
+      var row = document.getElementById('static-row-' + id);
+      if (row) row.style.display = annual > 0 ? '' : 'none';
+      setEl('static-' + id, annual > 0 ? fmtGbp(annual) : '\u2014');
+      if (descId) setEl(descId, descText);
+      setWidth(barId, annual / safeTotal * 100);
+    }
+
+    updateRow('wf',  'bar-wf-static',  'static-wf-desc',
+      wfAnnual,
+      wfStaff > 0 ? wfStaff + ' staff \u00d7 ' + wfPct + '% of \u00a3' + wfSalary + 'k true employer cost' : '');
+
+    updateRow('rev', 'bar-rev-static', 'static-rev-desc',
+      revAnnual,
+      revLeads > 0 ? revLeads + ' leads/mo \u00d7 \u00a3' + revAvgVal + ' \u00d7 ' + revUplift + '% uplift \u00d7 12' : '');
+
+    updateRow('rec', 'bar-rec-static', 'static-rec-desc',
+      recAnnual,
+      recOoh > 0 ? '\u00a3' + recOoh + '/mo \u00d7 12 months' : '');
+
+    updateRow('adv', 'bar-adv-static', 'static-adv-desc',
+      advAnnual,
+      advLeads > 0 || advChatbot > 0
+        ? (advLeads > 0 && advVal > 0 ? advLeads + ' leads/mo @ \u00a3' + advVal : '') +
+          (advLeads > 0 && advChatbot > 0 ? ' + ' : '') +
+          (advChatbot > 0 ? '\u00a3' + advChatbot + '/mo chatbot displaced' : '') + ' \u00d7 12'
+        : '');
+
+    updateRow('sup', 'bar-sup-static', 'static-sup-desc',
+      supAnnual,
+      supContracts > 0 ? '\u00a3' + supContracts.toLocaleString('en-GB') + ' at risk \u00d7 ' + supChurn + '% churn reduction' : '');
+
+    setEl('static-total', total > 0 ? fmtGbp(total) : '\u2014');
+
+    // ROI breakdown dynamic bars
+    var breakdownEl = document.getElementById('roi-breakdown');
+    if (breakdownEl) {
+      var rows = [
+        ['Manual admin & processing',        wfAnnual],
+        ['Missed & unconverted revenue',      revAnnual],
+        ['OOH call handling costs',           recAnnual],
+        ['Uncaptured website leads',          advAnnual],
+        ['At-risk contract value',            supAnnual]
+      ].filter(function(r){ return r[1] > 0; });
+      if (rows.length === 0) {
+        breakdownEl.innerHTML = '';
+      } else {
+        var maxVal = Math.max.apply(null, rows.map(function(r){ return r[1]; }));
+        breakdownEl.innerHTML = rows.map(function(r) {
+          return '<div style="margin-bottom:14px;">'
+            +'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;">'
+            +'<span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.6);">'+escHtml(r[0])+'</span>'
+            +'<span style="font-size:15px;font-weight:800;color:#2E52FE;white-space:nowrap;margin-left:12px;">'+fmtGbp(r[1])+'/yr</span>'
+            +'</div>'
+            +'<div style="height:7px;border-radius:4px;background:rgba(255,255,255,0.07);overflow:hidden;">'
+            +'<div style="height:100%;border-radius:4px;background:#2E52FE;width:'+Math.round(r[1]/maxVal*100)+'%;"></div>'
+            +'</div></div>';
+        }).join('')+'<div style="display:flex;justify-content:space-between;padding:10px 0 0;">'
+          +'<span style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.9);">Total annual saving</span>'
+          +'<span style="font-size:16px;font-weight:900;color:#28E289;">'+fmtGbp(total)+'/yr</span></div>';
+      }
+    }
+
+    var summaryEl = document.getElementById('roi-summary-text');
+    if (summaryEl && total > 0) {
+      var coName = escHtml(PROSPECT.companyName || 'your company');
+      summaryEl.innerHTML = 'Based on your inputs, Build Concierge is estimated to recover <strong>'+fmtGbp(total)+' per year</strong> for '+coName+' \u2014 against an annual cost of <strong>'+fmtGbp(bcCost)+'</strong>, giving a <strong>'+roiMultiple+' return on investment</strong> with a payback period of <strong>'+paybackMonths+'</strong>.';
+    }
+  }
+</script>
+</body>
+</html>
